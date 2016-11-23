@@ -12,26 +12,35 @@ window.onload = function () {
         var sourceItem = source.value.split(",").map(function(val) {
             return parseInt(val);
         });//把字符串转为数字，然后遍历整个函数
+
         var targetItem = parseInt(target.value);
 
 
         for (var i = 0;i<sourceItem.length-1;i++){
           var  leftValue = targetItem - sourceItem[i];
 
-            // for (var j = 0;j<sourceItem.length-1;j++){
-            //     if (j!= i){
-            //         if (leftValue == sourceItem[j]){
-            //             console.log("完成");
-            //         }
-            //
-            //     }
-            // }
-            var index = sourceItem.indexOf(leftValue);
-            if (index !== -1&&index!=i){
-                console.log(sourceItem[i] +"+"+ sourceItem[index]+ "=" +targetItem);
+            for (var j = 0;j<sourceItem.length-1;j++){
+                if (j!= i){
+                    if (leftValue == sourceItem[j]){
+                        console.log(sourceItem[i] +"+"+ sourceItem[j]+ "=" +targetItem);
+                    }
 
-                break;
+                }
             }
+            // var index = sourceItem.indexOf(leftValue);
+            // if (index !== -1&&index!=i){
+            //     console.log(sourceItem[i] +"+"+ sourceItem[index]+ "=" +targetItem);
+            //
+            //     break;
+            // }
         }
     }
 }
+
+// for(var i in nums) {
+//     for(var j in nums) {
+//         if(nums[i] + nums[j] === target && i !== j) {
+//             return [parseInt(i), parseInt(j)];
+//         }
+//     }
+// }

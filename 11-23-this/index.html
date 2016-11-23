@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+<input type="text" name="age" size=3 onchange="validate(this,18,99);">
+</body>
+<script type="text/javascript">
+    function validate(obj,lowVal,hiVal) {
+        if (lowVal>hiVal||obj.value<lowVal||obj.value>hiVal){
+            console.log("invalid value！");
+        }else {
+            console.log("bingo！")
+        }
+    }
+</script>
+</html>
