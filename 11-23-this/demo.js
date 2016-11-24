@@ -122,11 +122,21 @@ add.call(this,1,2);
 //3
 
 
+//9
+function add(x,y) {
+    console.log(x+y);
+}
+add.call(null,1,1);//2
+add.apply(null,[1,1]);//2
 
+//10
+var a=[1,56,4,7,8,9,7,5,20];
+console.log(Math.max.apply(null,a));
 
-
-
-
+//11
+var q = "###";
+console.log(q.replace(/\#/g,"1"));
+//111
 
 
 
