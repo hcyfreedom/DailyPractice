@@ -139,6 +139,102 @@ console.log(q.replace(/\#/g,"1"));
 //111
 
 
+//12
+Array.apply(null,["a",,"b"]);
+//a,undefined,b
+
+//13
+var a = ['a',,'b'];
+function print(i) {
+    console.log(i);
+}
+a.forEach(print);//a b
+Array.apply(null,a).forEach(print);//a undefined b
+
+
+//14
+var print  = console.log;
+print(2);//2,啧啧啧，应该是打印不出来的，但是。。
+
+var print = console.log.bind(console);
+print(2);//2
+
+
+
+//15
+var counter = {
+    count:0,
+    inc:function () {
+        this.count++;
+    }
+};
+
+var func = counter.inc.bind(counter);
+func();
+console.log(counter.count);//1
+
+var obj = {
+    count :100
+};
+var func2 = counter.inc.bind(obj);
+func2();
+console.log(obj.count);//101
+
+
+//16
+var add = function(x,y) {
+    return x*this.m+y*this.n;
+};
+var obj={
+    m:2,
+    n:3
+};
+var newAdd = add.bind(obj,5);
+
+console.log(newAdd(2));//16
+
+
+
+//17
+var obj = {
+    name:"张三",
+    times:["1","2","3"],
+    print:function(){
+        this.times.forEach(function (n) {
+            console.log(this.name);
+        }.bind(obj));
+    }
+};
+obj.print();
+//打印出三次 张三
+//另外，n好像传不传都一样。
+
+
+//18
+function f() {
+    console.log(this.v);
+};
+
+var o = { v: 123 };
+
+var bind = Function.prototype.call.bind(Function.prototype.bind);
+
+bind(f, o)(); // 123
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
